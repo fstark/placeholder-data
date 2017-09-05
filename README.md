@@ -19,4 +19,7 @@ Names extraced from https://www2.census.gov/topics/genealogy/2010surnames/names.
 
 Using tail -n +2 Names_2010Census.csv | head -10000 | cut -f 1 -d , > ../lastnames.txt
 
+## Companies
+
+List of companies from SEC web site https://www.sec.gov/rules/other/4-460list.htm
 
