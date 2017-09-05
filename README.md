@@ -16,15 +16,28 @@ Stats:
 
 ## Firstnames
 
-First names extracted from https://www.ssa.gov/OACT/babynames/names.zip
+Most popular first names extracted from https://www.ssa.gov/OACT/babynames/names.zip with the script:
 
-Extracted most popular males and females.
+	#!/bin/bash
+
+	echo > /tmp/$$.txt
+
+	for i in $( ls *.txt ); do
+		grep ',F' $i | head -500 | cut -f 1 -d , >> /tmp/F-$$.txt
+		grep ',M' $i | head -500 | cut -f 1 -d , >> /tmp/M-$$.txt
+	done
+
+	sort -u /tmp/F-$$.txt > ../firstnames-female.txt
+	sort -u /tmp/M-$$.txt > ../firstnames-male.txt
+
+	rm -f /tmp/F-$$.txt
+	rm -f /tmp/M-$$.txt
 
 ## Names
 
-Names extraced from https://www2.census.gov/topics/genealogy/2010surnames/names.zip
+Names extraced from https://www2.census.gov/topics/genealogy/2010surnames/names.zip using:
 
-Using tail -n +2 Names_2010Census.csv | head -10000 | cut -f 1 -d , > ../lastnames.txt
+    tail -n +2 Names_2010Census.csv | head -10000 | cut -f 1 -d , > lastnames.txt
 
 ## Companies
 
@@ -35,5 +48,6 @@ List of companies from SEC web site https://www.sec.gov/rules/other/4-460list.ht
 List from https://moz.com/top500/domains/csv
 
 Extracted with :
-	cut -f 2 -d , top500.domains.08.17.csv | sed -e 's/"*\/*//g'
+
+    tail -n +2 top500.domains.08.17.csv | cut -f 2 -d , | sed -e 's/"*\/*//g' > 
 
