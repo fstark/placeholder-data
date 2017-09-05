@@ -49,5 +49,5 @@ List from https://moz.com/top500/domains/csv
 
 Extracted with :
 
-    tail -n +2 top500.domains.08.17.csv | cut -f 2 -d , | sed -e 's/"*\/*//g' > 
+    tail -n +2 top500.domains.08.17.csv | cut -f 2 -d , | sed -e 's/"*\/*//g' > domainnames.txt
 
